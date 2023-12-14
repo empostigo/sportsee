@@ -1,6 +1,9 @@
-import React from "react"
+// React logic
 import ReactDOM from "react-dom/client"
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode></React.StrictMode>
-)
+// Router
+import SportSeeRouter from "./components/Router"
+
+import "./main.module.scss"
+
+ReactDOM.createRoot(document.getElementById("root")).render(<SportSeeRouter />)
