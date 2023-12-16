@@ -1,12 +1,12 @@
 .nav {
+  position: absolute;
+  top: 30vh;
+  left: 2vw;
   display: flex;
   flex-direction: column;
-  gap: 1.39vw;
-
-  .link {
-  }
+  gap: 1.95vh;
 
   .img {
-    width: 4.44vw;
+    height: 6.25vh;
   }
 }
