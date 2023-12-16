@@ -1,3 +1,4 @@
+// Style
 import footerStyle from "./Footer.module.scss"
 
 const Footer = () => {
