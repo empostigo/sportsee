@@ -14,7 +14,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(<Route path="/" element={<Root />} />)
 )
 
-const Router = () => {
+const SportSeeRouter = () => {
   return (
     <React.StrictMode>
       <RouterProvider router={router} />
@@ -22,4 +22,4 @@ const Router = () => {
   )
 }
 
-export default Router
+export default SportSeeRouter
