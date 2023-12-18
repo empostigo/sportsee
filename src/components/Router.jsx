@@ -32,7 +32,7 @@ const router = createBrowserRouter(
         element={<Layout />}
         errorElement={<ErrorPage />}
       >
-        <Route element={<Profil />} />
+        <Route path="" element={<Profil />} />
         <Route path="activity" element={<Activity />} />
         <Route path="average-sessions" element={<Sessions />} />
         <Route path="performance" element={<Performance />} />

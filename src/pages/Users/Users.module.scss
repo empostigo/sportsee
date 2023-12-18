@@ -1,13 +1,10 @@
-.main {
+.section {
   display: flex;
   justify-content: center;
   align-items: center;
   height: calc(100vh - 61px - 1.25vw);
+
   .user {
     height: 20px;
-  }
-
-  .link {
-    color: white;
   }
 }

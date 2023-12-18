@@ -6,8 +6,8 @@ import usersStyle from "./Users.module.scss"
 
 const Users = () => {
   return (
-    <main className={usersStyle.main}>
-      <section>
+    <main>
+      <section className={usersStyle.section}>
         <article className={usersStyle.user}>
           <Link className={usersStyle.link} to="/user/12">
             Karl Dovineau

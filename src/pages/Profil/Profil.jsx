@@ -1,15 +1,18 @@
-// React Router
-import { useParams } from "react-router-dom"
+// data
+import data from "../../fixtures/user.json"
 
 // Components
-import Layout from "../../components/Layout/Layout"
+import ActivityBar from "../../components/ActivityBar/ActivityBar"
 
 // Style
 import profilStyle from "./Profil.module.scss"
-import Header from "../../components/Header/Header"
+import { useParams } from "react-router-dom"
 
 const Profil = () => {
-  return <Header />
+  const { id } = useParams()
+  const { activity } = data.find(user => user.userId === parseInt(id))
+
+  return <ActivityBar data={activity} />
 }
 
 export default Profil
