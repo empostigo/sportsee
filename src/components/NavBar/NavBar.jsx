@@ -1,5 +1,5 @@
 // React
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 // Images
 import general from "../../assets/navbar/general.svg"
@@ -10,27 +10,32 @@ import performance from "../../assets/navbar/performance.svg"
 // Style
 import navbarStyle from "./NavBar.module.scss"
 
-const NavBar = () => {
-  const { userId } = useParams()
-  console.log(userId)
-
+const NavBar = ({ userId }) => {
   return (
     <>
       <nav className={navbarStyle.nav}>
         <Link to={`/user/${userId}`}>
-          <img className={navbarStyle.img} src={general} alt="Yoga" />
+          <img
+            className={navbarStyle.img}
+            src={general}
+            alt="Infos générales"
+          />
         </Link>
         <Link to={`/user/${userId}/activity`}>
-          <img className={navbarStyle.img} src={activity} alt="Natation" />
+          <img className={navbarStyle.img} src={activity} alt="Activité" />
         </Link>
         <Link to={`/user/${userId}/average-sessions`}>
-          <img className={navbarStyle.img} src={sessions} alt="Vélo" />
+          <img
+            className={navbarStyle.img}
+            src={sessions}
+            alt="Temps de sessions moyen"
+          />
         </Link>
         <Link to={`/user/${userId}/performance`}>
           <img
             className={navbarStyle.img}
             src={performance}
-            alt="Musculation"
+            alt="Performance"
           />
         </Link>
       </nav>

@@ -4,11 +4,13 @@ import {
   createBrowserRouter,
   RouterProvider,
   Route,
-  createRoutesFromElements
+  createRoutesFromElements,
+  useParams
 } from "react-router-dom"
 
 // Components
 import Root from "./Root/Root"
+import Layout from "./Layout/Layout"
 import Profil from "../pages/Profil/Profil"
 import Activity from "../pages/Activity/Activity"
 import ErrorPage from "../pages/ErrorPage/ErrorPage"
@@ -28,12 +30,15 @@ const router = createBrowserRouter(
         loader={({ params }) =>
           userData.find(user => user.userId === parseInt(params.id))
         }
-        element={<Profil />}
-        errorElement={"Erreur"}
-      />
-      <Route path="user/:id/activity" element={<Activity />} />
-      <Route path="user/:id/average-sessions" element={<Sessions />} />
-      <Route path="user/:id/performance" element={<Performance />} />
+        element={<Layout />}
+        errorElement={<ErrorPage />}
+      >
+        <Route element={<Profil />} />
+        <Route path="activity" element={<Activity />} />
+        <Route path="average-sessions" element={<Sessions />} />
+        <Route path="performance" element={<Performance />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Route>
       <Route path="*" element={<ErrorPage />} />
     </Route>
   )
