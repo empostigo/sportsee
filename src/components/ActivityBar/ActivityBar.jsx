@@ -9,16 +9,39 @@ import {
   Bar
 } from "recharts"
 
+// Components
+import BarShape from "../BarShape/BarShape"
+
 const ActivityBar = ({ data }) => {
+  const xAxisValues = () => data.map(activity => data.indexOf(activity) + 1)
+
   return (
     <BarChart width={730} height={250} data={data}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="day" />
-      <YAxis />
+      <XAxis dataKey={xAxisValues} padding={{ left: 20, right: 20 }} />
+      <YAxis
+        yAxisId="kg"
+        dataKey="kilogram"
+        type="number"
+        domain={["dataMin - 10", "dataMax + 10"]}
+        orientation="right"
+      />
+      <YAxis yAxisId="cal" dataKey="calories" hide={true} />
       <Tooltip />
       <Legend />
-      <Bar dataKey="kilogram" fill="#8885d8" />
-      <Bar dataKey="calories" fill="#83ca9d" />
+      <Bar
+        dataKey="kilogram"
+        barSize={7}
+        fill="#282d30"
+        yAxisId="kg"
+        shape={<BarShape />}
+      />
+      <Bar
+        dataKey="calories"
+        barSize={7}
+        fill="#e60000"
+        yAxisId="cal"
+        shape={<BarShape />}
+      />
     </BarChart>
   )
 }
