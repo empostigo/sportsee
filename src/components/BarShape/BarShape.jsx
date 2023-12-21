@@ -1,9 +1,11 @@
 import barshapeStyle from "./BarShape.module.scss"
 
 const getPath = (x, y, width, height) => {
+  const arcRadius = width / 2
+  const barHeight = height - width / 2
   return `M${x},${y}
-          h${width} v${height} h${-width} v${-height}
-          A ${width / 2} ${width / 2} 0 1 1 ${x + width} ${y}`
+          h${width} v${barHeight} h${-width} v${-barHeight}
+          A ${arcRadius} ${arcRadius} 0 1 1 ${x + width} ${y}`
 }
 
 const BarShape = props => {
