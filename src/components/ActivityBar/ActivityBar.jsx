@@ -11,13 +11,14 @@ import {
 
 // Components
 import BarShape from "../BarShape/BarShape"
+import CustomTooltip from "../CustomTooltip/CustomTooltip"
 
 const ActivityBar = ({ data }) => {
   const xAxisValues = () => data.map(activity => data.indexOf(activity) + 1)
 
   return (
     <BarChart width={730} height={250} data={data}>
-      <XAxis dataKey={xAxisValues} padding={{ left: 20, right: 20 }} />
+      <XAxis dataKey={xAxisValues} />
       <YAxis
         yAxisId="kg"
         dataKey="kg"
@@ -25,18 +26,13 @@ const ActivityBar = ({ data }) => {
         domain={["dataMin - 10", "dataMax + 10"]}
         orientation="right"
       />
-      <YAxis yAxisId="cal" dataKey="cal" hide={true} />
-      <Tooltip
-        separator=""
-        offset={54}
-        labelStyle={{ display: "none" }}
-        contentStyle={{
-          backgroundColor: "red",
-          height: "100px"
-        }}
-        itemStyle={{ backgroundColor: "red", color: "white" }}
-        formatter={(value, name, props) => [`${value} ${name}`, ""]}
+      <YAxis
+        yAxisId="cal"
+        dataKey="cal"
+        hide={true}
+        domain={["dataMin - 70", "dataMax + 70"]}
       />
+      <Tooltip content={<CustomTooltip />} />
       <Legend />
       <Bar
         dataKey="kg"
@@ -44,6 +40,7 @@ const ActivityBar = ({ data }) => {
         fill="#282d30"
         yAxisId="kg"
         shape={<BarShape />}
+        activeBar={<BarShape />}
       />
       <Bar
         dataKey="cal"
@@ -51,6 +48,7 @@ const ActivityBar = ({ data }) => {
         fill="#e60000"
         yAxisId="cal"
         shape={<BarShape />}
+        activeBar={<BarShape />}
       />
     </BarChart>
   )
