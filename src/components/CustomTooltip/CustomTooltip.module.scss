@@ -1,13 +1,14 @@
 .wrapper {
   position: relative;
-  left: 44px;
-  top: -100px;
+  left: 54px;
+  top: -50px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   background-color: red;
   padding: 4px 6px 4px 6px;
-  height: 100px;
+  height: 63px;
 
   .label {
     font-size: 12px;
