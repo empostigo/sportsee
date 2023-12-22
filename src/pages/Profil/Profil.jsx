@@ -8,11 +8,8 @@ import ActivityBar from "../../components/ActivityBar/ActivityBar"
 import profilStyle from "./Profil.module.scss"
 import { useParams } from "react-router-dom"
 
-const Profil = () => {
-  const { id } = useParams()
-  const { activity } = data.find(user => user.userId === parseInt(id))
-
-  return <ActivityBar data={activity} />
+const Profil = ({ data }) => {
+  return <ActivityBar />
 }
 
 export default Profil

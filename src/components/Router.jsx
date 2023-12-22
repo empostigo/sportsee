@@ -9,21 +9,22 @@ import {
 
 // Components
 import Root from "./Root/Root"
+/*
 import Layout from "./Layout/Layout"
 import Profil from "../pages/Profil/Profil"
 import Activity from "../pages/Activity/Activity"
 import ErrorPage from "../pages/ErrorPage/ErrorPage"
 import Sessions from "../pages/Sessions/Sessions"
 import Performance from "../pages/Performance/Performance"
-import Users from "../pages/Users/Users"
+*/
 
 // data
 import userData from "../fixtures/user.json"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />}>
-      <Route path="users" element={<Users />} />
+    <Route path="/" element={<Root data={userData} />}>
+      {/*
       <Route
         path="user/:id"
         loader={({ params }) =>
@@ -32,13 +33,13 @@ const router = createBrowserRouter(
         element={<Layout />}
         errorElement={<ErrorPage />}
       >
-        <Route path="" element={<Profil />} />
         <Route path="activity" element={<Activity />} />
         <Route path="average-sessions" element={<Sessions />} />
         <Route path="performance" element={<Performance />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
       <Route path="*" element={<ErrorPage />} />
+      */}
     </Route>
   )
 )
