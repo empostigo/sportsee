@@ -3,9 +3,9 @@ import barshapeStyle from "./BarShape.module.scss"
 const getPath = (x, y, width, height) => {
   const arcRadius = width / 2
   const barHeight = height - width / 2
-  return `M${x},${y}
+  return `M${x},${y + arcRadius}
           h${width} v${barHeight} h${-width} v${-barHeight}
-          A ${arcRadius} ${arcRadius} 0 1 1 ${x + width} ${y}`
+          A ${arcRadius} ${arcRadius} 0 1 1 ${x + width} ${y + arcRadius}`
 }
 
 const BarShape = props => {

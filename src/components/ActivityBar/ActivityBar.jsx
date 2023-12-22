@@ -33,7 +33,6 @@ const ActivityBar = ({ data }) => {
         domain={["dataMin - 70", "dataMax + 70"]}
       />
       <Tooltip content={<CustomTooltip />} />
-      <Legend />
       <Bar
         dataKey="kg"
         barSize={7}
