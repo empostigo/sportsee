@@ -2,10 +2,8 @@
 import {
   BarChart,
   CartesianGrid,
-  CartesianAxis,
   XAxis,
   YAxis,
-  Line,
   Tooltip,
   Bar,
   ResponsiveContainer,
@@ -29,30 +27,44 @@ const ActivityBar = ({ data }) => {
     const values = [value, value.charAt(0).toUpperCase() + value.slice(1)]
 
     return (
-      <span
-        className={activityStyle.legend}
-      >{`${labels[index]}${values[index]})`}</span>
+      <>
+        <span className={activityStyle.title}>Activité quotidienne</span>
+        <span
+          className={activityStyle.legend}
+        >{`${labels[index]}${values[index]})`}</span>
+      </>
     )
   }
 
   return (
     <article className={activityStyle.article}>
-      <ResponsiveContainer>
-        <BarChart data={data}>
-          <CartesianGrid vertical={false} strokeDasharray="4" />
+      <ResponsiveContainer height="100%" width="100%">
+        <BarChart
+          data={data}
+          margin={{ top: 63, right: 43, bottom: 23, left: 43 }}
+        >
+          <CartesianGrid
+            vertical={false}
+            stroke="#dedede"
+            strokeDasharray="4"
+          />
           <XAxis
             dataKey={xAxisValues}
+            tick={{ fill: "#9b9eac" }}
             tickLine={false}
             tickMargin={16}
-            axisLine={false}
+            axisLine={{ fill: "#dedede" }}
+            padding={{ left: -50, right: -50 }}
           />
           <YAxis
             yAxisId="kg"
             dataKey="kg"
             type="number"
             orientation="right"
+            tick={{ fill: "#9b9eac" }}
             tickLine={false}
             tickCount={3}
+            tickMargin={43}
             axisLine={false}
           />
           <YAxis yAxisId="cal" dataKey="cal" hide={true} />
@@ -63,7 +75,7 @@ const ActivityBar = ({ data }) => {
             iconType="circle"
             iconSize={8}
             formatter={renderLegend}
-            margin={{ top: 100, left: 0, right: 0, bottom: 100 }}
+            wrapperStyle={{ top: 0 }}
           />
           <Bar
             dataKey="kg"
