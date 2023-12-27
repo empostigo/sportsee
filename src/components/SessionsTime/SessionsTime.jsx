@@ -12,10 +12,10 @@ import {
 // Components
 import LineTooltip from "../LineTooltip/LineTooltip"
 import LineChartActiveDot from "../LineChartActiveDot/LineChartActiveDot"
+import LineChartCursor from "../LineChartCursor/LineChartCursor"
 
 // Style
 import sessionsStyle from "./SessionsTime.module.scss"
-import LineChartCursor from "../LineChartCursor/LineChartCursor"
 
 const SessionsTime = ({ data }) => {
   const days = ["L", "M", "M", "J", "V", "S", "D"]
@@ -30,27 +30,27 @@ const SessionsTime = ({ data }) => {
     )
   }
 
-  const toolTipFormatter = (value, name, props) => {
-    const text = ["", " min"]
-    return `${value} min`
-  }
-
-  const activeDot = () => {
-    return <img src="../../assets/dot-active.svg" alt="dot-active" />
-  }
-
   return (
     <article className={sessionsStyle.wrapper}>
       <ResponsiveContainer height="100%" width="100%">
         <LineChart data={data}>
           <XAxis
             dataKey={xAxisValue}
-            tick={{ fill: "white", fontSize: "12px", fontWeight: 400 }}
+            tick={{
+              fill: "white",
+              fontSize: "12px",
+              fontWeight: 400,
+              opacity: 0.504
+            }}
             tickLine={false}
             axisLine={false}
             padding={{ left: 13, right: 13 }}
           />
-          <YAxis dataKey="sessionLength" hide={true} />
+          <YAxis
+            dataKey="sessionLength"
+            hide={true}
+            domain={["dataMin - 20", "dataMax + 20"]}
+          />
           <Tooltip cursor={<LineChartCursor />} content={<LineTooltip />} />
           <Legend
             formatter={legendFormatter}
@@ -59,7 +59,8 @@ const SessionsTime = ({ data }) => {
             iconSize={0}
           />
           <Line
-            type="monotone"
+            type="natural"
+            name="What ?"
             dataKey="sessionLength"
             stroke="white"
             strokeWidth={2}
