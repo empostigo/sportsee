@@ -9,14 +9,6 @@ import {
 
 // Components
 import Root from "./Root/Root"
-/*
-import Layout from "./Layout/Layout"
-import Profil from "../pages/Profil/Profil"
-import Activity from "../pages/Activity/Activity"
-import ErrorPage from "../pages/ErrorPage/ErrorPage"
-import Sessions from "../pages/Sessions/Sessions"
-import Performance from "../pages/Performance/Performance"
-*/
 
 // data
 import userData from "../fixtures/user.json"
