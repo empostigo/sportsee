@@ -12,7 +12,7 @@ import {
 
 // Components
 import BarShape from "../BarShape/BarShape"
-import CustomTooltip from "../CustomTooltip/CustomTooltip"
+import BarChartTooltip from "../BarChartTooltip/BarChartTooltip"
 
 // Style
 import activityStyle from "./ActivityBar.module.scss"
@@ -68,7 +68,7 @@ const ActivityBar = ({ data }) => {
             axisLine={false}
           />
           <YAxis yAxisId="cal" dataKey="cal" hide={true} />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<BarChartTooltip />} />
           <Legend
             verticalAlign="top"
             align="right"

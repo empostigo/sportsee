@@ -1,6 +1,6 @@
-import customStyle from "./CustomTooltip.module.scss"
+import customStyle from "./BarChartTooltip.module.scss"
 
-const CustomTooltip = ({ active, payload }) => {
+const BarChartTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <div className={customStyle.wrapper}>
@@ -11,4 +11,4 @@ const CustomTooltip = ({ active, payload }) => {
   }
 }
 
-export default CustomTooltip
+export default BarChartTooltip
