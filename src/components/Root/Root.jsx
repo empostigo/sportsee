@@ -2,13 +2,14 @@
 import Header from "../Header/Header"
 import NavBar from "../NavBar/NavBar"
 import ActivityBar from "../ActivityBar/ActivityBar"
+import SessionsTime from "../SessionsTime/SessionsTime"
 import Footer from "../Footer/Footer"
 
 // Style
 import rootStyle from "./Root.module.scss"
 
 const Root = ({ data }) => {
-  const { activity } = data[0]
+  const { activity, sessionsTiming } = data[0]
   return (
     <>
       <Header />
@@ -26,9 +27,11 @@ const Root = ({ data }) => {
           </p>
         </section>
         <section>
-          <div>
+          <div className={rootStyle.charts}>
             <ActivityBar data={activity} />
-            <div></div>
+            <div className={rootStyle.smallCharts}>
+              <SessionsTime data={sessionsTiming} />
+            </div>
           </div>
           <div></div>
         </section>

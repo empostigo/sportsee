@@ -27,4 +27,16 @@
     font-size: 18px;
     font-weight: 400;
   }
+
+  .charts {
+    display: flex;
+    flex-direction: column;
+    gap: 2.9vh;
+  }
+
+  .smallCharts {
+    display: flex;
+    gap: 2.9vh;
+    height: 25.4vh;
+  }
 }

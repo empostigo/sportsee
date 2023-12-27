@@ -37,7 +37,7 @@ const ActivityBar = ({ data }) => {
   }
 
   return (
-    <article className={activityStyle.article}>
+    <article className={activityStyle.wrapper}>
       <ResponsiveContainer height="100%" width="100%">
         <BarChart
           data={data}
