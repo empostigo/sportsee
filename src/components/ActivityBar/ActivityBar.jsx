@@ -53,7 +53,7 @@ const ActivityBar = ({ data }) => {
             tick={{ fill: "#9b9eac" }}
             tickLine={false}
             tickMargin={16}
-            axisLine={{ fill: "#dedede" }}
+            axisLine={{ stroke: "#dedede" }}
             padding={{ left: -50, right: -50 }}
           />
           <YAxis

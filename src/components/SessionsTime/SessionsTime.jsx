@@ -34,6 +34,12 @@ const SessionsTime = ({ data }) => {
     <article className={sessionsStyle.wrapper}>
       <ResponsiveContainer height="100%" width="100%">
         <LineChart data={data}>
+          <defs>
+            <linearGradient id="lineStroke" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="40.32%" stopColor="#ffffff" stopOpacity={0.5} />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity={1} />
+            </linearGradient>
+          </defs>
           <XAxis
             dataKey={xAxisValue}
             tick={{
@@ -62,7 +68,7 @@ const SessionsTime = ({ data }) => {
             type="natural"
             name="What ?"
             dataKey="sessionLength"
-            stroke="white"
+            stroke="url(#lineStroke)"
             strokeWidth={2}
             dot={false}
             activeDot={<LineChartActiveDot />}
