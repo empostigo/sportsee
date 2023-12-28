@@ -7,9 +7,10 @@ import Footer from "../Footer/Footer"
 
 // Style
 import rootStyle from "./Root.module.scss"
+import PerformanceRadar from "../PerformanceRadar/PerformanceRadar"
 
 const Root = ({ data }) => {
-  const { activity, sessionsTiming } = data[0]
+  const { activity, sessionsTiming, performance } = data[0]
   return (
     <>
       <Header />
@@ -31,6 +32,7 @@ const Root = ({ data }) => {
             <ActivityBar data={activity} />
             <div className={rootStyle.smallCharts}>
               <SessionsTime data={sessionsTiming} />
+              <PerformanceRadar data={performance} />
             </div>
           </div>
           <div></div>
