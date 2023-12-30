@@ -1,8 +1,12 @@
+// React
+import { useEffect, useRef, useState } from "react"
+
 // Recharts
 import {
   Legend,
   Line,
   LineChart,
+  Rectangle,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -18,6 +22,7 @@ import LineChartCursor from "../LineChartCursor/LineChartCursor"
 import sessionsStyle from "./SessionsTime.module.scss"
 
 const SessionsTime = ({ data }) => {
+  const wrapper = useRef(null)
   const days = ["L", "M", "M", "J", "V", "S", "D"]
   const xAxisValue = () => data.map(session => days[session.day - 1])
   const legendFormatter = () => {
@@ -30,10 +35,20 @@ const SessionsTime = ({ data }) => {
     )
   }
 
+  const [wrapperHeight, setWrapperHeight] = useState(undefined)
+  useEffect(() => {
+    const getWrapperHeight = () => {
+      setWrapperHeight(wrapper.current.offsetHeight)
+    }
+    window.addEventListener("resize", getWrapperHeight)
+    getWrapperHeight()
+    return () => window.removeEventListener("resize", getWrapperHeight)
+  }, [])
+
   return (
-    <article className={sessionsStyle.wrapper}>
+    <article className={sessionsStyle.wrapper} ref={wrapper}>
       <ResponsiveContainer height="100%" width="100%">
-        <LineChart data={data}>
+        <LineChart data={data} margin={{ left: 0, right: 0 }}>
           <defs>
             <linearGradient id="lineStroke" x1="0" y1="0" x2="1" y2="1">
               <stop offset="40.32%" stopColor="#ffffff" stopOpacity={0.5} />
@@ -50,14 +65,17 @@ const SessionsTime = ({ data }) => {
             }}
             tickLine={false}
             axisLine={false}
-            padding={{ left: 13, right: 13 }}
           />
           <YAxis
             dataKey="sessionLength"
             hide={true}
             domain={["dataMin - 20", "dataMax + 20"]}
           />
-          <Tooltip cursor={<LineChartCursor />} content={<LineTooltip />} />
+          <Tooltip
+            cursor={<LineChartCursor height={wrapperHeight} />}
+            content={<LineTooltip />}
+            top={0}
+          />
           <Legend
             formatter={legendFormatter}
             align="left"
@@ -66,7 +84,6 @@ const SessionsTime = ({ data }) => {
           />
           <Line
             type="natural"
-            name="What ?"
             dataKey="sessionLength"
             stroke="url(#lineStroke)"
             strokeWidth={2}
