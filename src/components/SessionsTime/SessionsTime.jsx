@@ -23,13 +23,11 @@ import XAxisTicks from "../XaxisTicks/XaxisTicks"
 
 const SessionsTime = ({ data }) => {
   const wrapper = useRef(null)
-  const xAxisY = useRef(null)
   const [wrapperHeight, setWrapperHeight] = useState(undefined)
   const [firstTickY, setFirstTickY] = useState(undefined)
   useEffect(() => {
     const getWrapperHeight = () => {
       setWrapperHeight(wrapper.current.offsetHeight)
-      setFirstTickY(xAxisY.current.offsetHeight)
     }
     window.addEventListener("resize", getWrapperHeight)
     getWrapperHeight()
@@ -59,7 +57,6 @@ const SessionsTime = ({ data }) => {
             </linearGradient>
           </defs>
           <XAxis
-            ref={xAxisY}
             dataKey={xAxisValue}
             tick={{
               fill: "white",
@@ -73,7 +70,7 @@ const SessionsTime = ({ data }) => {
           />
           <text
             x="7%"
-            y={firstTickY}
+            y="94.5%"
             style={{
               fill: "white",
               fontSize: "12px",
