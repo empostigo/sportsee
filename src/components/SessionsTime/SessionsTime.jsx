@@ -6,7 +6,6 @@ import {
   Legend,
   Line,
   LineChart,
-  Rectangle,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -20,9 +19,23 @@ import LineChartCursor from "../LineChartCursor/LineChartCursor"
 
 // Style
 import sessionsStyle from "./SessionsTime.module.scss"
+import XAxisTicks from "../XaxisTicks/XaxisTicks"
 
 const SessionsTime = ({ data }) => {
   const wrapper = useRef(null)
+  const xAxisY = useRef(null)
+  const [wrapperHeight, setWrapperHeight] = useState(undefined)
+  const [firstTickY, setFirstTickY] = useState(undefined)
+  useEffect(() => {
+    const getWrapperHeight = () => {
+      setWrapperHeight(wrapper.current.offsetHeight)
+      setFirstTickY(xAxisY.current.offsetHeight)
+    }
+    window.addEventListener("resize", getWrapperHeight)
+    getWrapperHeight()
+    return () => window.removeEventListener("resize", getWrapperHeight)
+  }, [])
+
   const days = ["L", "M", "M", "J", "V", "S", "D"]
   const xAxisValue = () => data.map(session => days[session.day - 1])
   const legendFormatter = () => {
@@ -35,16 +48,6 @@ const SessionsTime = ({ data }) => {
     )
   }
 
-  const [wrapperHeight, setWrapperHeight] = useState(undefined)
-  useEffect(() => {
-    const getWrapperHeight = () => {
-      setWrapperHeight(wrapper.current.offsetHeight)
-    }
-    window.addEventListener("resize", getWrapperHeight)
-    getWrapperHeight()
-    return () => window.removeEventListener("resize", getWrapperHeight)
-  }, [])
-
   return (
     <article className={sessionsStyle.wrapper} ref={wrapper}>
       <ResponsiveContainer height="100%" width="100%">
@@ -56,6 +59,7 @@ const SessionsTime = ({ data }) => {
             </linearGradient>
           </defs>
           <XAxis
+            ref={xAxisY}
             dataKey={xAxisValue}
             tick={{
               fill: "white",
@@ -65,7 +69,20 @@ const SessionsTime = ({ data }) => {
             }}
             tickLine={false}
             axisLine={false}
+            style={{ transform: "translateX(20px) scaleX(0.82)" }}
           />
+          <text
+            x="7%"
+            y={firstTickY}
+            style={{
+              fill: "white",
+              fontSize: "12px",
+              fontWeight: 400,
+              opacity: 0.504
+            }}
+          >
+            L
+          </text>
           <YAxis
             dataKey="sessionLength"
             hide={true}
@@ -74,7 +91,6 @@ const SessionsTime = ({ data }) => {
           <Tooltip
             cursor={<LineChartCursor height={wrapperHeight} />}
             content={<LineTooltip />}
-            top={0}
           />
           <Legend
             formatter={legendFormatter}
