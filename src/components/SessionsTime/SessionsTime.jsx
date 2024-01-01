@@ -70,7 +70,7 @@ const SessionsTime = ({ data }) => {
           />
           <text
             x="7%"
-            y="94.5%"
+            y={wrapperHeight - 14}
             style={{
               fill: "white",
               fontSize: "12px",
