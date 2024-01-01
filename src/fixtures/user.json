@@ -6,7 +6,7 @@
       "lastName": "Dovineau",
       "age": 31
     },
-    "score": 0.12,
+    "score": [{ "value": 12, "fill": "#ff0000" }],
     "keyData": {
       "calorieCount": 1930,
       "proteinCount": 155,

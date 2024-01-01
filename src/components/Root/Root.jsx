@@ -3,14 +3,15 @@ import Header from "../Header/Header"
 import NavBar from "../NavBar/NavBar"
 import ActivityBar from "../ActivityBar/ActivityBar"
 import SessionsTime from "../SessionsTime/SessionsTime"
+import PerformanceRadar from "../PerformanceRadar/PerformanceRadar"
+import Score from "../Score/Score"
 import Footer from "../Footer/Footer"
 
 // Style
 import rootStyle from "./Root.module.scss"
-import PerformanceRadar from "../PerformanceRadar/PerformanceRadar"
 
 const Root = ({ data }) => {
-  const { activity, sessionsTiming, performance } = data[0]
+  const { activity, sessionsTiming, performance, score } = data[0]
   return (
     <>
       <Header />
@@ -27,12 +28,13 @@ const Root = ({ data }) => {
             Félicitation ! Vous avez explosé vos objectifs hier 👏
           </p>
         </section>
-        <section>
+        <section className={rootStyle.chartWrapper}>
           <div className={rootStyle.charts}>
             <ActivityBar data={activity} />
             <div className={rootStyle.smallCharts}>
               <SessionsTime data={sessionsTiming} />
               <PerformanceRadar data={performance} />
+              <Score data={score} />
             </div>
           </div>
           <div></div>
