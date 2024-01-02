@@ -28,7 +28,9 @@
   }
 
   .chartWrapper {
-    width: 58vw;
+    display: flex;
+    gap: 2.1vw;
+    width: 78vw;
   }
 
   .charts {
@@ -40,11 +42,18 @@
   .smallCharts {
     display: flex;
     justify-content: space-between;
+    gap: 2.1vw;
     height: 18.1vw;
 
     article {
       width: 18.1vw;
       border-radius: 10px;
     }
+  }
+
+  .capsules {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }

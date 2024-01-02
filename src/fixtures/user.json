@@ -7,12 +7,28 @@
       "age": 31
     },
     "score": [{ "value": 12, "fill": "#ff0000" }],
-    "keyData": {
-      "calorieCount": 1930,
-      "proteinCount": 155,
-      "carbohydrateCount": 290,
-      "lipidCount": 50
-    },
+    "keyData": [
+      {
+        "kind": "calories",
+        "value": "1,930",
+        "unit": "kCal"
+      },
+      {
+        "kind": "protéines",
+        "value": 155,
+        "unit": "g"
+      },
+      {
+        "kind": "glucides",
+        "value": 290,
+        "unit": "g"
+      },
+      {
+        "kind": "lipides",
+        "value": 50,
+        "unit": "g"
+      }
+    ],
     "activity": [
       {
         "day": "2020-07-01",

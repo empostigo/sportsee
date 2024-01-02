@@ -4,14 +4,23 @@ import NavBar from "../NavBar/NavBar"
 import ActivityBar from "../ActivityBar/ActivityBar"
 import SessionsTime from "../SessionsTime/SessionsTime"
 import PerformanceRadar from "../PerformanceRadar/PerformanceRadar"
+import Capsule from "../Capsule/Capsule"
 import Score from "../Score/Score"
 import Footer from "../Footer/Footer"
+
+// Assets
+import calories from "../../assets/data-icons/calories-icon.svg"
+import proteins from "../../assets/data-icons/protein-icon.svg"
+import carbs from "../../assets/data-icons/carbs-icon.svg"
+import lipids from "../../assets/data-icons/fat-icon.svg"
 
 // Style
 import rootStyle from "./Root.module.scss"
 
 const Root = ({ data }) => {
-  const { activity, sessionsTiming, performance, score } = data[0]
+  const { activity, sessionsTiming, performance, score, keyData } = data[0]
+  const iconsArray = [calories, proteins, carbs, lipids]
+
   return (
     <>
       <Header />
@@ -37,7 +46,15 @@ const Root = ({ data }) => {
               <Score data={score} />
             </div>
           </div>
-          <div></div>
+          <div className={rootStyle.capsules}>
+            {keyData.map((item, index) => (
+              <Capsule
+                key={`item-${index}`}
+                icon={iconsArray[index]}
+                data={item}
+              />
+            ))}
+          </div>
         </section>
       </main>
       <Footer />

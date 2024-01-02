@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1.7vw;
+  background-color: #fbfbfb;
+  padding: 2.2vw;
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    line-height: 24px;
+  }
+
+  .value {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .kind {
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
