@@ -7,7 +7,7 @@ const Score = ({ data }) => {
   return (
     <article className={scoreStyle.wrapper}>
       <h2 className={scoreStyle.title}>Score</h2>
-      <div className={scoreStyle.container}>
+      <div className={scoreStyle.background}>
         <p className={scoreStyle.emphasized}>{data[0].value}%</p>
         <p className={scoreStyle.text}>
           de votre
