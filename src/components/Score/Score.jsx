@@ -3,24 +3,29 @@ import { RadialBar, RadialBarChart, ResponsiveContainer } from "recharts"
 import scoreStyle from "./Score.module.scss"
 
 const Score = ({ data }) => {
+  const normalizedData = [{ value: 100, fill: "#fff" }].concat(data)
   return (
     <article className={scoreStyle.wrapper}>
-      <div className={scoreStyle.container}></div>
+      <h2 className={scoreStyle.title}>Score</h2>
+      <div className={scoreStyle.container}>
+        <p className={scoreStyle.emphasized}>{data[0].value}%</p>
+        <p className={scoreStyle.text}>
+          de votre
+          <br />
+          objectif
+        </p>
+      </div>
       <ResponsiveContainer>
         <RadialBarChart
           cx="50%"
           cy="50%"
-          innerRadius="66%"
+          innerRadius="56%"
           outerRadius="76%"
           startAngle={90}
-          data={data}
+          endAngle={450}
+          data={normalizedData}
         >
-          <RadialBar
-            dataKey="value"
-            data={[data[0]]}
-            cornerRadius={10}
-            minAngle={15}
-          />
+          <RadialBar dataKey="value" cornerRadius={10} max={100} />
         </RadialBarChart>
       </ResponsiveContainer>
     </article>
