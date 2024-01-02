@@ -1,10 +1,11 @@
 .wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   column-gap: 1.7vw;
   background-color: #fbfbfb;
   padding: 2.2vw;
+  width: 16vw;
 
   .text {
     display: flex;
