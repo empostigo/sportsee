@@ -2,7 +2,6 @@
 import {
   PolarAngleAxis,
   PolarGrid,
-  PolarRadiusAxis,
   Radar,
   RadarChart,
   ResponsiveContainer
@@ -15,14 +14,16 @@ const PerformanceRadar = ({ data }) => {
   return (
     <article className={radarStyle.wrapper}>
       <ResponsiveContainer>
-        <RadarChart data={data} outerRadius="70%">
+        <RadarChart data={data} innerRadius={10} outerRadius="70%">
           <PolarGrid type="circle" radialLines={false} />
           <PolarAngleAxis
             dataKey="kind"
             tick={{
-              fontSize: "12px",
+              fontSize: "0.833vw",
+              lineHeight: "24px",
               fill: "#ffffff"
             }}
+            dy={3}
           />
           <Radar dataKey="value" fill="#ff0101" fillOpacity={0.7} />
         </RadarChart>
