@@ -14,24 +14,24 @@ const NavBar = ({ userId }) => {
   return (
     <>
       <nav className={navbarStyle.nav}>
-        <Link to="#">
+        <Link to="#" className={navbarStyle.link}>
           <img
             className={navbarStyle.img}
             src={general}
             alt="Infos générales"
           />
         </Link>
-        <Link to="#">
+        <Link to="#" className={navbarStyle.link}>
           <img className={navbarStyle.img} src={activity} alt="Activité" />
         </Link>
-        <Link to="#">
+        <Link to="#" className={navbarStyle.link}>
           <img
             className={navbarStyle.img}
             src={sessions}
             alt="Temps de sessions moyen"
           />
         </Link>
-        <Link to="#">
+        <Link to="#" className={navbarStyle.link}>
           <img
             className={navbarStyle.img}
             src={performance}

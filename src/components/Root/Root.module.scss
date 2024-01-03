@@ -3,9 +3,11 @@
   flex-direction: column;
   row-gap: 7.52vh;
   background-color: white;
-  margin: 1.25vw -6.25vw 0 calc(6.25vh + 2vw);
-  padding: 6.64vh 6.25vw 8.4vh 7.43vw;
-
+  margin-left: calc(6.25vh + 2vw);
+  padding-right: 6.25vw;
+  padding-left: 7.43vw;
+  padding-bottom: 8.4vh;
+  padding-top: 6.64vh;
   .userInfos {
     display: flex;
     flex-direction: column;
