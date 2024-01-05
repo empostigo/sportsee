@@ -3,12 +3,16 @@ import { RadialBar, RadialBarChart, ResponsiveContainer } from "recharts"
 import scoreStyle from "./Score.module.scss"
 
 const Score = ({ data }) => {
-  const normalizedData = [{ value: 100, fill: "#fff" }].concat(data)
+  const normalizedData = [
+    { value: 100, fill: "#fff" },
+    { value: data, fill: "#ff0000" }
+  ]
+
   return (
     <article className={scoreStyle.wrapper}>
       <h2 className={scoreStyle.title}>Score</h2>
       <div className={scoreStyle.background}>
-        <p className={scoreStyle.emphasized}>{data[0].value}%</p>
+        <p className={scoreStyle.emphasized}>{data}%</p>
         <p className={scoreStyle.text}>
           de votre
           <br />

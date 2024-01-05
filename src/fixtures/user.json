@@ -6,7 +6,7 @@
       "lastName": "Dovineau",
       "age": 31
     },
-    "score": [{ "value": 12, "fill": "#ff0000" }],
+    "score": 12,
     "keyData": [
       {
         "kind": "calories",
