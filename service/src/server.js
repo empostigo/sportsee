@@ -1,8 +1,12 @@
 const http = require("http")
-const user = require("./getData")
+
+/*
+const remoteApi = "https://api.sportsee.empostigo.dev"
+const user = remoteApi.concat("/user/12")
+*/
 
 const server = http.createServer((request, response) => {
-  response.end(user)
+  response.end("This is node sever!")
 })
 
 server.listen(process.env.PORT || 3000)
