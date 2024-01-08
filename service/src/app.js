@@ -1,5 +1,6 @@
 const express = require("express")
 const axios = require("axios")
+const mappingFunction = require("./formatData")
 
 const remoteApi = "https://api.sportsee.empostigo.dev"
 const user = remoteApi.concat("/user/12")
@@ -7,10 +8,11 @@ const user = remoteApi.concat("/user/12")
 const app = express()
 
 axios.get(user).then(response => {
-  const stuff = response.data
+  const rawUserData = response.data
+  const formattedUserData = mappingFunction(rawUserData.data)
 
   app.use("/user/12", (req, res, next) => {
-    res.status(200).json(stuff)
+    res.status(200).json(formattedUserData)
   })
 })
 
