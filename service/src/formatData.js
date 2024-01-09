@@ -54,54 +54,34 @@ const formatKeyData = keyDataObject => {
 
 const mapping = {
   id: "userId",
-  userInfos: { setValue: object => object },
   todayScore: { newName: "score", setValue: value => formatScore(value) },
   keyData: {
     setValue: object => formatKeyData(object)
   }
 }
 
-const mappingFunction = object => {
+const mappingUserInfos = object => {
   const result = {}
-  for (const key in mapping) {
-    const mappingKey = mapping[key]
-    const isValueObject = typeof mappingKey === "object"
-    const newKey = isValueObject
-      ? "newName" in mappingKey
-        ? mappingKey.newName
-        : key
-      : mappingKey
-    if (object.hasOwnProperty(key)) {
+  for (const key in object) {
+    if (mapping.hasOwnProperty(key)) {
+      const mappingKey = mapping[key]
+      const isValueObject = typeof mappingKey === "object"
+      const newKey = isValueObject
+        ? "newName" in mappingKey
+          ? mappingKey.newName
+          : key
+        : mappingKey
       result[newKey] = isValueObject
         ? "setValue" in mappingKey
           ? mappingKey.setValue(object[key])
           : object[key]
         : object[key]
     } else {
-      result[newKey] = null
+      result[key] = object[key]
     }
   }
 
   return result
 }
 
-/*
-const testData = {
-  data: {
-    id: 12,
-    userInfos: { firstName: "Karl", lastName: "Dovineau", age: 31 },
-    todayScore: 0.12,
-    keyData: {
-      calorieCount: 1930,
-      proteinCount: 155,
-      carbohydrateCount: 290,
-      lipidCount: 50
-    }
-  }
-}
-
-const result = mappingFunction(testData.data, mapping)
-console.log(result)
-*/
-
-module.exports = mappingFunction
+module.exports = mappingUserInfos
