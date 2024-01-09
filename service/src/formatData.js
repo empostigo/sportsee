@@ -52,7 +52,7 @@ const formatKeyData = keyDataObject => {
   return result
 }
 
-const mapping = {
+const userInfosMapping = {
   id: "userId",
   todayScore: { newName: "score", setValue: value => formatScore(value) },
   keyData: {
@@ -63,8 +63,8 @@ const mapping = {
 const mappingUserInfos = object => {
   const result = {}
   for (const key in object) {
-    if (mapping.hasOwnProperty(key)) {
-      const mappingKey = mapping[key]
+    if (userInfosMapping.hasOwnProperty(key)) {
+      const mappingKey = userInfosMapping[key]
       const isValueObject = typeof mappingKey === "object"
       const newKey = isValueObject
         ? "newName" in mappingKey
@@ -84,4 +84,48 @@ const mappingUserInfos = object => {
   return result
 }
 
-module.exports = mappingUserInfos
+const replaceSessionsKeys = sessionsArray =>
+  sessionsArray.map(object => {
+    const result = {}
+    for (const key in object) {
+      let newKey = ""
+      switch (key) {
+        case "day":
+          result[key] = object[key]
+          break
+
+        case "kilogram":
+          newKey = "kg"
+          result[newKey] = object[key]
+          break
+
+        case "calories":
+          newKey = "cal"
+          result[newKey] = object[key]
+          break
+      }
+    }
+
+    return result
+  })
+
+const userActivityMapping = {
+  sessions: {
+    setValue: sessionsArray => replaceSessionsKeys(sessionsArray)
+  }
+}
+
+const mappingUserActivity = object => {
+  const result = {}
+  for (const key in object) {
+    if (userActivityMapping.hasOwnProperty(key)) {
+      result[key] = userActivityMapping[key].setValue(object[key])
+    } else {
+      result[key] = object[key]
+    }
+  }
+
+  return result
+}
+
+module.exports = { mappingUserInfos, mappingUserActivity }

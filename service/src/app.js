@@ -1,35 +1,35 @@
 const express = require("express")
 const axios = require("axios")
-const mappingUserInfos = require("./formatData")
+const { mappingUserInfos, mappingUserActivity } = require("./formatData")
 
 const remoteApi = "https://api.sportsee.empostigo.dev"
-const user = userId => remoteApi.concat(`/user/${userId}`)
-//const activity =
-
-const userIds = [12, 18]
-const userPath = userIds.map(userId => `/user/${userId}`)
-const userRoutes = userPath.map(userId => remoteApi.concat(userId))
 
 const app = express()
 
-const createUsersRoutes = () => {
-  for (const userRoute in userRoutes)
-    axios.get(userRoutes[userRoute]).then(response => {
-      const rawUserData = response.data
-      const formattedUserData = mappingUserInfos(rawUserData.data)
+app.param("id", (req, res, next, value, name) => {
+  req[name] = value
+  next()
+})
 
-      app.use(userPath[userRoute], (req, res, next) => {
-        res.status(201).json(formattedUserData)
-      })
+app.get("/user/:id", (req, res) => {
+  const remoteURL = remoteApi.concat(`/user/${req.id}`)
+  axios(remoteURL)
+    .then(response => {
+      const userInfos = mappingUserInfos(response.data.data)
+      res.status(201).json(userInfos)
     })
-}
+    .catch(error => {
+      console.error(error)
+      res.status(500).send("Internal Server Error")
+    })
+})
 
-const getUserActivity = () => {}
-
-const createAPI = () => {
-  createUsersRoutes()
-}
-
-createAPI()
+app.get("/user/:id/activity", (req, res) => {
+  const remoteURL = remoteApi.concat(`/user/${req.id}/activity`)
+  axios(remoteURL).then(response => {
+    const userActivity = mappingUserActivity(response.data.data)
+    res.status(201).json(userActivity)
+  })
+})
 
 module.exports = app
