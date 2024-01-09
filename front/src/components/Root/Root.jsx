@@ -18,7 +18,7 @@ import lipids from "../../assets/data-icons/fat-icon.svg"
 import rootStyle from "./Root.module.scss"
 
 const Root = ({ data }) => {
-  const { activity, sessionsTiming, performance, score, keyData } = data[0]
+  const { activity, sessions, performance, score, keyData } = data[0]
   const iconsArray = [calories, proteins, carbs, lipids]
 
   return (
@@ -41,7 +41,7 @@ const Root = ({ data }) => {
           <div className={rootStyle.charts}>
             <ActivityBar data={activity} />
             <div className={rootStyle.smallCharts}>
-              <SessionsTime data={sessionsTiming} />
+              <SessionsTime data={sessions} />
               <PerformanceRadar data={performance} />
               <Score data={score} />
             </div>
