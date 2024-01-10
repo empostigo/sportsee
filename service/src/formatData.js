@@ -55,6 +55,7 @@ const formatKeyData = keyDataObject => {
 const userInfosMapping = {
   id: "userId",
   todayScore: { newName: "score", setValue: value => formatScore(value) },
+  score: { setValue: value => formatScore(value) },
   keyData: {
     setValue: object => formatKeyData(object)
   }
@@ -128,4 +129,62 @@ const mappingUserActivity = object => {
   return result
 }
 
-module.exports = { mappingUserInfos, mappingUserActivity }
+const activityNames = [
+  "Cardio",
+  "Energie",
+  "Endurance",
+  "Force",
+  "Vitesse",
+  "Intensité"
+]
+const formatUserPerformance = performanceData =>
+  performanceData
+    .map(object => {
+      const result = {}
+      const objectKeys = Object.keys(object).reverse()
+      for (const key of objectKeys) {
+        switch (key) {
+          case "kind":
+            result[key] = activityNames[object[key] - 1]
+            break
+
+          case "value":
+            result[key] = object[key]
+        }
+      }
+
+      return result
+    })
+    .reverse()
+
+const userPerformanceMapping = {
+  userId: "userId",
+  data: {
+    newName: "performance",
+    setValue: object => formatUserPerformance(object)
+  }
+}
+
+const mappingUserPerformance = object => {
+  const result = {}
+  for (const key in userPerformanceMapping) {
+    if (object.hasOwnProperty(key)) {
+      const isValueObject = typeof userPerformanceMapping[key] === "object"
+      isValueObject
+        ? (result[userPerformanceMapping[key].newName] = userPerformanceMapping[
+            key
+          ].setValue(object[key]))
+        : (result[key] = object[key])
+    } else {
+      result[key] = object[key]
+    }
+  }
+
+  return result
+}
+
+module.exports = {
+  mappingUserInfos,
+  mappingUserActivity,
+  mappingUserPerformance
+}
