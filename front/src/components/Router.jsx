@@ -10,13 +10,8 @@ import {
 // Components
 import Root from "./Root/Root"
 
-// data
-import userData from "../fixtures/user.json"
-
 const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Root data={userData} />} />
-  )
+  createRoutesFromElements(<Route path="/" element={<Root />} />)
 )
 
 const Router = () => {

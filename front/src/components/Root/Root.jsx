@@ -1,3 +1,9 @@
+// React
+import { useEffect, useState } from "react"
+
+// axios
+import axios from "axios"
+
 // Components
 import Header from "../Header/Header"
 import NavBar from "../NavBar/NavBar"
@@ -17,8 +23,22 @@ import lipids from "../../assets/data-icons/fat-icon.svg"
 // Style
 import rootStyle from "./Root.module.scss"
 
-const Root = ({ data }) => {
-  const { activity, sessions, performance, score, keyData } = data[0]
+const Root = () => {
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    axios("http://localhost:3000/user/18/user-data")
+      .then(response => {
+        setData(response.data)
+      })
+      .catch(error => console.error("Erreur de requête Axios :", error))
+  }, [])
+
+  if (!data) {
+    return <p>Chargement en cours...</p>
+  }
+
+  const { activity, sessions, performance, score, keyData } = data
   const iconsArray = [calories, proteins, carbs, lipids]
 
   return (
@@ -31,7 +51,7 @@ const Root = ({ data }) => {
             bonjour{" "}
             <span
               className={rootStyle.userName}
-            >{`${data[0].userInfos.firstName}`}</span>
+            >{`${data.userInfos.firstName}`}</span>
           </h1>
           <p className={rootStyle.congrats}>
             Félicitation ! Vous avez explosé vos objectifs hier 👏
