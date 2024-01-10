@@ -7,17 +7,19 @@ const {
 } = require("./formatData")
 
 const remoteApi = "https://api.sportsee.empostigo.dev"
+const localPath = "http://localhost:3000"
+
+const userPath = "/user/:id"
+const userActivity = `${userPath}/activity`
+const userSessions = `${userPath}/average-sessions`
+const userPerformance = `${userPath}/performance`
+const userData = `${userPath}/user-data`
 
 const app = express()
 
-app.param("id", (req, res, next, value, name) => {
-  req[name] = value
-  next()
-})
-
-app.get("/user/:id", (req, res) => {
-  const remoteURL = remoteApi.concat(`/user/${req.id}`)
-  axios(remoteURL)
+app.get(userPath, async (req, res) => {
+  const remoteURL = remoteApi.concat(`/user/${req.params.id}`)
+  await axios(remoteURL)
     .then(response => {
       const userInfos = mappingUserInfos(response.data.data)
       res.status(201).json(userInfos)
@@ -28,27 +30,73 @@ app.get("/user/:id", (req, res) => {
     })
 })
 
-app.get("/user/:id/activity", (req, res) => {
-  const remoteURL = remoteApi.concat(`/user/${req.id}/activity`)
-  axios(remoteURL).then(response => {
-    const userActivity = mappingUserActivity(response.data.data)
-    res.status(201).json(userActivity)
-  })
+app.get(userActivity, async (req, res) => {
+  const remoteURL = remoteApi.concat(`/user/${req.params.id}/activity`)
+  await axios(remoteURL)
+    .then(response => {
+      const userActivity = mappingUserActivity(response.data.data)
+      res.status(201).json(userActivity)
+    })
+    .catch(error => {
+      console.error(error)
+      res.status(500).send("Internal Server Error")
+    })
 })
 
-app.get("/user/:id/average-sessions", (req, res) => {
-  const remoteURL = remoteApi.concat(`/user/${req.id}/average-sessions`)
-  axios(remoteURL).then(response => {
-    res.status(201).json(response.data.data)
-  })
+app.get(userSessions, async (req, res) => {
+  const remoteURL = remoteApi.concat(`/user/${req.params.id}/average-sessions`)
+  await axios(remoteURL)
+    .then(response => {
+      res.status(201).json(response.data.data)
+    })
+    .catch(error => {
+      console.error(error)
+      res.status(500).send("Internal Server Error")
+    })
 })
 
-app.get("/user/:id/performance", (req, res) => {
-  const remoteURL = remoteApi.concat(`/user/${req.id}/performance`)
-  axios(remoteURL).then(response => {
-    const userPerformance = mappingUserPerformance(response.data.data)
-    res.status(201).json(userPerformance)
-  })
+app.get(userPerformance, async (req, res) => {
+  const remoteURL = remoteApi.concat(`/user/${req.params.id}/performance`)
+  await axios(remoteURL)
+    .then(response => {
+      const userPerformance = mappingUserPerformance(response.data.data)
+      res.status(201).json(userPerformance)
+    })
+    .catch(error => {
+      console.error(error)
+      res.status(500).send("Internal Server Error")
+    })
+})
+
+app.get(userData, async (req, res) => {
+  const userId = req.params.id
+
+  const userURL = localPath.concat("/user/", userId)
+  const userActivityURL = userURL.concat("/activity")
+  const userSessionsURL = userURL.concat("/average-sessions")
+  const userPerformanceURL = userURL.concat("/performance")
+
+  try {
+    const userInfosData = await axios(userURL).then(response => response.data)
+    const userActivityData = await axios(userActivityURL).then(
+      response => response.data
+    )
+    const userSessionsData = await axios(userSessionsURL).then(
+      response => response.data
+    )
+    const userPerformanceData = await axios(userPerformanceURL).then(
+      response => response.data
+    )
+
+    res.json({
+      ...userInfosData,
+      ...userActivityData,
+      ...userSessionsData,
+      ...userPerformanceData
+    })
+  } catch (error) {
+    console.error(error)
+  }
 })
 
 module.exports = app

@@ -112,6 +112,7 @@ const replaceSessionsKeys = sessionsArray =>
 
 const userActivityMapping = {
   sessions: {
+    newName: "activity",
     setValue: sessionsArray => replaceSessionsKeys(sessionsArray)
   }
 }
@@ -120,7 +121,8 @@ const mappingUserActivity = object => {
   const result = {}
   for (const key in object) {
     if (userActivityMapping.hasOwnProperty(key)) {
-      result[key] = userActivityMapping[key].setValue(object[key])
+      const newKey = userActivityMapping[key].newName
+      result[newKey] = userActivityMapping[key].setValue(object[key])
     } else {
       result[key] = object[key]
     }
@@ -181,6 +183,142 @@ const mappingUserPerformance = object => {
   }
 
   return result
+}
+
+const test = {
+  userInfosData: {
+    userId: 12,
+    userInfos: {
+      firstName: "Karl",
+      lastName: "Dovineau",
+      age: 31
+    },
+    score: 12,
+    keyData: [
+      {
+        kind: "calories",
+        value: "1,930",
+        unit: "kCal"
+      },
+      {
+        kind: "protéines",
+        value: 155,
+        unit: "g"
+      },
+      {
+        kind: "glucides",
+        value: 290,
+        unit: "g"
+      },
+      {
+        kind: "lipides",
+        value: 50,
+        unit: "g"
+      }
+    ]
+  },
+  userActivityData: {
+    userId: 12,
+    activity: [
+      {
+        day: "2020-07-01",
+        kg: 80,
+        cal: 240
+      },
+      {
+        day: "2020-07-02",
+        kg: 80,
+        cal: 220
+      },
+      {
+        day: "2020-07-03",
+        kg: 81,
+        cal: 280
+      },
+      {
+        day: "2020-07-04",
+        kg: 81,
+        cal: 290
+      },
+      {
+        day: "2020-07-05",
+        kg: 80,
+        cal: 160
+      },
+      {
+        day: "2020-07-06",
+        kg: 78,
+        cal: 162
+      },
+      {
+        day: "2020-07-07",
+        kg: 76,
+        cal: 390
+      }
+    ]
+  },
+  userSessionsData: {
+    userId: 12,
+    sessions: [
+      {
+        day: 1,
+        sessionLength: 30
+      },
+      {
+        day: 2,
+        sessionLength: 23
+      },
+      {
+        day: 3,
+        sessionLength: 45
+      },
+      {
+        day: 4,
+        sessionLength: 50
+      },
+      {
+        day: 5,
+        sessionLength: 0
+      },
+      {
+        day: 6,
+        sessionLength: 0
+      },
+      {
+        day: 7,
+        sessionLength: 60
+      }
+    ]
+  },
+  userPerformanceData: {
+    userId: 12,
+    performance: [
+      {
+        kind: "Intensité",
+        value: 90
+      },
+      {
+        kind: "Vitesse",
+        value: 200
+      },
+      {
+        kind: "Force",
+        value: 50
+      },
+      {
+        kind: "Endurance",
+        value: 140
+      },
+      {
+        kind: "Energie",
+        value: 120
+      },
+      {
+        kind: "Cardio",
+        value: 80
+      }
+    ]
+  }
 }
 
 module.exports = {
