@@ -23,8 +23,20 @@ import lipids from "../../assets/data-icons/fat-icon.svg"
 // Style
 import rootStyle from "./Root.module.scss"
 
+// data
+import mockedData from "../../fixtures/user.json"
+
 const Root = () => {
-  const [data, setData] = useState(null)
+  const localData = {
+    userInfos: mockedData.userInfos,
+    activity: mockedData.activity,
+    sessions: mockedData.sessions,
+    performance: mockedData.performance,
+    score: mockedData.score,
+    keyData: mockedData.keyData
+  }
+
+  const [data, setData] = useState(localData)
 
   useEffect(() => {
     axios("http://localhost:3000/user/18/user-data")
@@ -38,7 +50,7 @@ const Root = () => {
     return <p>Chargement en cours...</p>
   }
 
-  const { activity, sessions, performance, score, keyData } = data
+  const { userInfos, activity, sessions, performance, score, keyData } = data
   const iconsArray = [calories, proteins, carbs, lipids]
 
   return (
@@ -51,7 +63,7 @@ const Root = () => {
             bonjour{" "}
             <span
               className={rootStyle.userName}
-            >{`${data.userInfos.firstName}`}</span>
+            >{`${userInfos.firstName}`}</span>
           </h1>
           <p className={rootStyle.congrats}>
             Félicitation ! Vous avez explosé vos objectifs hier 👏
