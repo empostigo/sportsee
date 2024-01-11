@@ -23,20 +23,8 @@ import lipids from "../../assets/data-icons/fat-icon.svg"
 // Style
 import rootStyle from "./Root.module.scss"
 
-// data
-import mockedData from "../../fixtures/user.json"
-
 const Root = () => {
-  const localData = {
-    userInfos: mockedData.userInfos,
-    activity: mockedData.activity,
-    sessions: mockedData.sessions,
-    performance: mockedData.performance,
-    score: mockedData.score,
-    keyData: mockedData.keyData
-  }
-
-  const [data, setData] = useState(localData)
+  const [data, setData] = useState(null)
 
   useEffect(() => {
     axios("http://localhost:3000/user/18/user-data")
