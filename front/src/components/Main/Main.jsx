@@ -1,5 +1,4 @@
 // Components
-import NavBar from "../NavBar/NavBar"
 import ActivityBar from "../ActivityBar/ActivityBar"
 import SessionsTime from "../SessionsTime/SessionsTime"
 import PerformanceRadar from "../PerformanceRadar/PerformanceRadar"
@@ -21,7 +20,6 @@ const Main = ({ data }) => {
 
   return (
     <main className={mainStyle.main}>
-      <NavBar />
       <section className={mainStyle.userInfos}>
         <h1 className={mainStyle.h1}>
           bonjour{" "}

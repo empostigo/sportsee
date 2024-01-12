@@ -108,7 +108,7 @@ app.get(userData, async (req, res) => {
       ...userPerformanceData
     })
   } catch (error) {
-    console.error(error)
+    console.error(error.message)
   }
 })
 
