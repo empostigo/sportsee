@@ -9,7 +9,7 @@ ARG APP_SRC=/usr/src/app
 ARG REPOSITORY=https://github.com/empostigo/sportsee.git
 WORKDIR ${APP_SRC}
 RUN set -ex; \
-  git clone ${REPOSITORY}
+  git -b front clone ${REPOSITORY}
 
 FROM ${BASE_IMAGE}
 
