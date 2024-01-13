@@ -3,7 +3,7 @@ FROM ${BASE_IMAGE} AS builder
 
 RUN set -ex; \
   apk update; \
-  apk add git
+  apk add git tini --no-cache
 
 ARG APP_SRC=/usr/src/app
 ARG REPOSITORY=https://github.com/empostigo/sportsee.git
@@ -20,11 +20,10 @@ ARG APP_ROOT=${APP_SRC}/sportsee/service
 RUN set -ex; \
   addgroup -S ${GROUPNAME}; \
   adduser -S -G ${GROUPNAME} ${USERNAME}
-USER ${USERNAME}
 WORKDIR ${APP_SRC}
 COPY --from=builder --chown=${USERNAME}:${GROUPNAME} ${APP_ROOT} ${APP_SRC}
 
 RUN set -ex; \
   npm i
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "api"]
