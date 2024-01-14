@@ -6,17 +6,20 @@ RUN set -ex; \
   apk add git
 
 ARG APP_SRC=/usr/src/app
+ARG APP_ROOT=${APP_SRC}/sportsee/front
 ARG REPOSITORY=https://github.com/empostigo/sportsee.git
 WORKDIR ${APP_SRC}
 RUN set -ex; \
   git clone ${REPOSITORY}
+WORKDIR ${APP_ROOT}
+RUN set -ex; \
+  sed -i 's#http://localhost:3000#https://oc-sportsee-backend' src/components/Root/Root.jsx
 
 FROM ${BASE_IMAGE}
 
 ARG USERNAME=reactjs
 ARG GROUPNAME=reactjs
 ARG APP_SRC=/usr/src/app
-ARG APP_ROOT=${APP_SRC}/sportsee/front
 RUN set -ex; \
   addgroup -S ${GROUPNAME}; \
   adduser -S -G ${GROUPNAME} ${USERNAME}
