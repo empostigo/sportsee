@@ -20,8 +20,8 @@ const customedLabels = ({ payload, x, y, cx, cy, ...rest }) => {
     <Text
       {...rest}
       verticalAnchor="middle"
-      y={y + (y - cy) / 18}
-      x={x + (x - cx) / 18}
+      y={y + (y - cy) / 50}
+      x={x + (x - cx) / 50}
       style={{ ...rest, ...customStyle }}
     >
       {payload.value}
