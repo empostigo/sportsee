@@ -1,68 +1,68 @@
 {
   "userId": 12,
   "userInfos": {
-    "firstName": "Karl",
-    "lastName": "Dovineau",
-    "age": 31
+    "firstName": "Thomas",
+    "lastName": "Tau",
+    "age": 27
   },
-  "score": 12,
+  "score": 76,
   "keyData": [
     {
       "kind": "calories",
-      "value": "1,930",
+      "value": "820",
       "unit": "kCal"
     },
     {
       "kind": "protéines",
-      "value": 155,
+      "value": 147,
       "unit": "g"
     },
     {
       "kind": "glucides",
-      "value": 290,
+      "value": 320,
       "unit": "g"
     },
     {
       "kind": "lipides",
-      "value": 50,
+      "value": 70,
       "unit": "g"
     }
   ],
   "activity": [
     {
-      "day": "2020-07-01",
-      "kg": 80,
-      "cal": 240
+      "day": "2023-09-14",
+      "kg": 75,
+      "cal": 304
     },
     {
-      "day": "2020-07-02",
-      "kg": 80,
-      "cal": 220
+      "day": "2023-09-15",
+      "kg": 74,
+      "cal": 311
     },
     {
-      "day": "2020-07-03",
-      "kg": 81,
+      "day": "2023-09-16",
+      "kg": 75,
+      "cal": 505
+    },
+    {
+      "day": "2023-09-17",
+      "kg": 74,
+      "cal": 428
+    },
+    {
+      "day": "2023-09-18",
+      "kg": 74,
       "cal": 280
     },
     {
-      "day": "2020-07-04",
-      "kg": 81,
-      "cal": 290
+      "day": "2023-09-19",
+      "kg": 75,
+      "cal": 288
     },
     {
-      "day": "2020-07-05",
-      "kg": 80,
-      "cal": 160
-    },
-    {
-      "day": "2020-07-06",
-      "kg": 78,
-      "cal": 162
-    },
-    {
-      "day": "2020-07-07",
-      "kg": 76,
-      "cal": 390
+      "day": "2023-09-20",
+      "kg": 75,
+      "cal": 396
     }
   ],
   "sessions": [
@@ -72,11 +72,11 @@
     },
     {
       "day": 2,
-      "sessionLength": 23
+      "sessionLength": 32
     },
     {
       "day": 3,
-      "sessionLength": 45
+      "sessionLength": 48
     },
     {
       "day": 4,
@@ -84,7 +84,7 @@
     },
     {
       "day": 5,
-      "sessionLength": 0
+      "sessionLength": 10
     },
     {
       "day": 6,
@@ -92,7 +92,7 @@
     },
     {
       "day": 7,
-      "sessionLength": 60
+      "sessionLength": 25
     }
   ],
   "performance": [
@@ -102,23 +102,23 @@
     },
     {
       "kind": "Vitesse",
-      "value": 120
+      "value": 130
     },
     {
       "kind": "Force",
-      "value": 140
+      "value": 120
     },
     {
       "kind": "Endurance",
-      "value": 50
+      "value": 47
     },
     {
       "kind": "Energie",
-      "value": 200
+      "value": 220
     },
     {
       "kind": "Cardio",
-      "value": 90
+      "value": 88
     }
   ]
 }
