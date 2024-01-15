@@ -56,7 +56,7 @@ To use images from my repository :
 
 The backend url is set to `localhost:3000`
 
-## Demo site:
+## Demo site
 
-- Frontend: [https://oc-sportsee-frontend.hub.empostigo.dev]
-- Backend: [https://oc-sportsee-backend.hub.empostigo.dev] completed by routes
+- Frontend: https://oc-sportsee-frontend.hub.empostigo.dev
+- Backend: https://oc-sportsee-backend.hub.empostigo.dev completed by routes
