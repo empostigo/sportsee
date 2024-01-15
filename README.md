@@ -56,6 +56,8 @@ To use images from my repository :
 
 The backend url is set to `localhost:3000`
 
+These images are simples, so issue the command `docker stop container_name` to stop them, as CTRL + C won't work.
+
 ## Demo site
 
 - Frontend: https://oc-sportsee-frontend.hub.empostigo.dev
