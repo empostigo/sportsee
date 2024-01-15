@@ -37,3 +37,21 @@ Individuals sets of data for each users are visible at these routes:
 ## Docker
 
 To facilitate online deployment, there are in each folders, `front` and `service` a Dockerfile to generate container images. \
+There are shared at [Docker Hub](https://hub.docker.com/u/empostigo). \
+You can rebuild the frontend to update the backend url if it is online on domain name. \
+
+To build the backend: cd to sportsee/service and issue the command `docker build -t tag_name .`
+
+To build the frontend: `docker build -t (tag_name) [--build-arg API_URL=(online backend url)] .`
+
+Use the `-p` (publish) to run the containers:
+
+- `docker run --rm --name backend-container-name -p 3000:3000 backend-image-name`
+- `docker run --rm --name frontend-container-name -p 5173:5173 frontend-image-name`
+
+To use images from my repository :
+
+- backend-image-name = empostigo/oc-sportsee-backend
+- frontend-image-name = empostigo/oc-sportsee-frontend
+
+The backend url is set to `localhost:3000`

@@ -7,11 +7,12 @@ RUN set -ex; \
 
 ARG APP_SRC=/usr/src/app
 ARG REPOSITORY=https://github.com/empostigo/sportsee.git
+ARG API_URL=http://localhost:3000
 WORKDIR ${APP_SRC}
 RUN set -ex; \
   git clone ${REPOSITORY}
 RUN set -ex; \
-  sed -i 's#http://localhost:3000#https://oc-sportsee-backend.hub.empostigo.dev#' sportsee/front/src/components/Root/Root.jsx
+  sed -i "s#http://localhost:3000#${API_URL}#" sportsee/front/src/components/Root/Root.jsx
 
 FROM ${BASE_IMAGE}
 
