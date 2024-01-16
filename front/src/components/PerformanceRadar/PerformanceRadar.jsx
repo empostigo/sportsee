@@ -17,14 +17,15 @@ import radarStyle from "./PerformanceRadar.module.scss"
 const customedLabels = ({ payload, x, y, cx, cy, ...rest }) => {
   const customStyle = {
     fontSize: "0.833vw",
+    lineHeight: "17vw",
     fill: "#ffffff"
   }
   return (
     <Text
       {...rest}
       verticalAnchor="middle"
-      y={y + (y - cy) / 50}
-      x={x + (x - cx) / 50}
+      y={y + (y - cy) / 20}
+      x={x + (x - cx) / 20}
       style={{ ...rest, ...customStyle }}
     >
       {payload.value}
