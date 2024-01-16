@@ -14,6 +14,9 @@ import {
 import BarShape from "../BarShape/BarShape"
 import BarChartTooltip from "../BarChartTooltip/BarChartTooltip"
 
+// Props type checking
+import PropTypes from "prop-types"
+
 // Style
 import activityStyle from "./ActivityBar.module.scss"
 
@@ -97,6 +100,12 @@ const ActivityBar = ({ data }) => {
       </ResponsiveContainer>
     </article>
   )
+}
+
+ActivityBar.propTypes = {
+  data: PropTypes.array.isRequired,
+  map: PropTypes.func,
+  indexOf: PropTypes.func
 }
 
 export default ActivityBar

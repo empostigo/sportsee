@@ -1,4 +1,5 @@
-import barshapeStyle from "./BarShape.module.scss"
+// Props type checking
+import PropTypes from "prop-types"
 
 const getPath = (x, y, width, height) => {
   const arcRadius = width / 2
@@ -12,6 +13,14 @@ const BarShape = props => {
   const { x, y, width, height, fill } = props
 
   return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />
+}
+
+BarShape.propTypes = {
+  x: PropTypes.number,
+  y: PropTypes.number,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  fill: PropTypes.string
 }
 
 export default BarShape

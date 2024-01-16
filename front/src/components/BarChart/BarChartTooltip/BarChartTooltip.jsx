@@ -1,4 +1,8 @@
+// Style
 import customStyle from "./BarChartTooltip.module.scss"
+
+// Props type checking
+import propTypes from "prop-types"
 
 const BarChartTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
@@ -9,6 +13,13 @@ const BarChartTooltip = ({ active, payload }) => {
       </div>
     )
   }
+}
+
+BarChartTooltip.propTypes = {
+  active: propTypes.bool,
+  payload: propTypes.array,
+  length: propTypes.number,
+  value: propTypes.number
 }
 
 export default BarChartTooltip

@@ -1,3 +1,6 @@
+// Props type checking
+import PropTypes from "prop-types"
+
 // Style
 import capsuleStyle from "./Capsule.module.scss"
 
@@ -14,6 +17,11 @@ const Capsule = ({ icon, data }) => {
       </div>
     </article>
   )
+}
+
+Capsule.propTypes = {
+  icon: PropTypes.string,
+  data: PropTypes.object
 }
 
 export default Capsule

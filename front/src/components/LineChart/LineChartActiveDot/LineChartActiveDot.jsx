@@ -1,8 +1,8 @@
-// Style
-import activeDot from "./LineChartActiveDot.module.scss"
+// Props type checking
+import PropTypes from "prop-types"
 
 const LineChartActiveDot = props => {
-  const { cx, cy, value } = props
+  const { cx, cy } = props
   return (
     <svg
       x={cx - 10}
@@ -27,6 +27,11 @@ const LineChartActiveDot = props => {
       />
     </svg>
   )
+}
+
+LineChartActiveDot.propTypes = {
+  cx: PropTypes.number,
+  cy: PropTypes.number
 }
 
 export default LineChartActiveDot

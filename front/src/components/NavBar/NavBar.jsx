@@ -10,7 +10,7 @@ import performance from "../../assets/navbar/performance.svg"
 // Style
 import navbarStyle from "./NavBar.module.scss"
 
-const NavBar = ({ userId }) => {
+const NavBar = () => {
   return (
     <>
       <nav className={navbarStyle.nav}>

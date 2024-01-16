@@ -8,6 +8,9 @@ import {
   Text
 } from "recharts"
 
+// Props type checking
+import PropTypes from "prop-types"
+
 // Style
 import radarStyle from "./PerformanceRadar.module.scss"
 
@@ -44,6 +47,10 @@ const PerformanceRadar = ({ data }) => {
       </ResponsiveContainer>
     </article>
   )
+}
+
+PerformanceRadar.propTypes = {
+  data: PropTypes.array.isRequired
 }
 
 export default PerformanceRadar

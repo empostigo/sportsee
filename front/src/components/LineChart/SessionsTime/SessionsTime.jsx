@@ -17,6 +17,9 @@ import LineTooltip from "../LineTooltip/LineTooltip"
 import LineChartActiveDot from "../LineChartActiveDot/LineChartActiveDot"
 import LineChartCursor from "../LineChartCursor/LineChartCursor"
 
+// Props type checking
+import PropTypes from "prop-types"
+
 // Style
 import sessionsStyle from "./SessionsTime.module.scss"
 
@@ -105,6 +108,10 @@ const SessionsTime = ({ data }) => {
       </ResponsiveContainer>
     </article>
   )
+}
+
+SessionsTime.propTypes = {
+  data: PropTypes.array.isRequired
 }
 
 export default SessionsTime

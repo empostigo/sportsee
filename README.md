@@ -38,6 +38,8 @@ Individuals sets of data for each users are visible at these routes:
 - User sessions average timing: `/user/${userId}/average-sessions`
 - User performance:  `/user/${userId}/performance`
 
+The whole data for the users, used to fill the charts can be fetch from /user/${userId}/user-data
+
 ## Docker
 
 To facilitate online deployment, there are in each folders, `front` and `service` a Dockerfile to generate container images. \

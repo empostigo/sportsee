@@ -14,6 +14,9 @@ import lipids from "../../assets/data-icons/fat-icon.svg"
 // Style
 import mainStyle from "./Main.module.scss"
 
+// Props type checking
+import PropTypes from "prop-types"
+
 const Main = ({ data }) => {
   const { userInfos, activity, sessions, performance, score, keyData } = data
   const iconsArray = [calories, proteins, carbs, lipids]
@@ -50,6 +53,18 @@ const Main = ({ data }) => {
       </section>
     </main>
   )
+}
+
+Main.propTypes = {
+  data: PropTypes.object.isRequired,
+  userInfos: PropTypes.object,
+  activity: PropTypes.array,
+  sessions: PropTypes.array,
+  performance: PropTypes.array,
+  score: PropTypes.number,
+  keyData: PropTypes.array,
+  firstName: PropTypes.string,
+  map: PropTypes.func
 }
 
 export default Main
