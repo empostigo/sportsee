@@ -2,8 +2,8 @@
 
 ## Maquette Figma du frontend
 
-[1]: Front-UI.png
-[2]: min-Front-UI.png
+[1]: assets/Front-UI.png
+[2]: assets/min-Front-UI.png
 [![SportSee figma mockup][2]][1]
 
 ## Installation
