@@ -26,6 +26,11 @@ const Root = () => {
       })
   }, [id])
 
+  /*
+  If data === undefined, there is a problem with the API, returned code 500, Internal server error
+  If !data, user not find
+  If all okay, return page, aka Main component, with fetch data 
+  */
   if (data === undefined) return <ErrorAPI />
   if (!data) return <ErrorNoUser />
 
