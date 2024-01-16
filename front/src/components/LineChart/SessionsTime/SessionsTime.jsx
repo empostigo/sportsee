@@ -19,12 +19,10 @@ import LineChartCursor from "../LineChartCursor/LineChartCursor"
 
 // Style
 import sessionsStyle from "./SessionsTime.module.scss"
-import XAxisTicks from "../XaxisTicks/XaxisTicks"
 
 const SessionsTime = ({ data }) => {
   const wrapper = useRef(null)
   const [wrapperHeight, setWrapperHeight] = useState(undefined)
-  const [firstTickY, setFirstTickY] = useState(undefined)
   useEffect(() => {
     const getWrapperHeight = () => {
       setWrapperHeight(wrapper.current.offsetHeight)

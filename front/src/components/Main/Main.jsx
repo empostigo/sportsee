@@ -1,6 +1,6 @@
 // Components
-import ActivityBar from "../ActivityBar/ActivityBar"
-import SessionsTime from "../SessionsTime/SessionsTime"
+import ActivityBar from "../BarChart/ActivityBar/ActivityBar"
+import SessionsTime from "../LineChart/SessionsTime/SessionsTime"
 import PerformanceRadar from "../PerformanceRadar/PerformanceRadar"
 import Capsule from "../Capsule/Capsule"
 import Score from "../Score/Score"
