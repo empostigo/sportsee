@@ -6,6 +6,10 @@
 [2]: assets/min-Front-UI.png
 [![SportSee figma mockup][2]][1]
 
+## Runtime / package manager
+
+`nodejs` : `v20.10.0` - LTS
+
 ## Installation
 
 ### Backend
