@@ -17,6 +17,7 @@ const userData = `${userPath}/user-data`
 
 const app = express()
 
+// /user/userId
 app.get(userPath, async (req, res) => {
   const remoteURL = remoteApi.concat(`/user/${req.params.id}`)
   await axios(remoteURL)
@@ -30,6 +31,7 @@ app.get(userPath, async (req, res) => {
     })
 })
 
+// /user/userId/activity
 app.get(userActivity, async (req, res) => {
   const remoteURL = remoteApi.concat(`/user/${req.params.id}/activity`)
   await axios(remoteURL)
@@ -43,6 +45,7 @@ app.get(userActivity, async (req, res) => {
     })
 })
 
+// /user/userId/average-sessions
 app.get(userSessions, async (req, res) => {
   const remoteURL = remoteApi.concat(`/user/${req.params.id}/average-sessions`)
   await axios(remoteURL)
@@ -55,6 +58,7 @@ app.get(userSessions, async (req, res) => {
     })
 })
 
+// /user/userId/performance
 app.get(userPerformance, async (req, res) => {
   const remoteURL = remoteApi.concat(`/user/${req.params.id}/performance`)
   await axios(remoteURL)
@@ -68,6 +72,7 @@ app.get(userPerformance, async (req, res) => {
     })
 })
 
+// Enable cross-origin requests
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader(
@@ -81,6 +86,7 @@ app.use((req, res, next) => {
   next()
 })
 
+// /user/userId/user-data
 app.get(userData, async (req, res) => {
   const userId = req.params.id
 

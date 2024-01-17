@@ -1,3 +1,4 @@
+//////////////////////////////////////////////////////////////////////:
 const formatScore = score => score * 100
 
 const formatCalories = value => {
@@ -6,6 +7,7 @@ const formatCalories = value => {
   return strValue.join(",")
 }
 
+// Return an array of objects, instead of an object
 const formatKeyData = keyDataObject => {
   const result = []
   for (const key in keyDataObject) {
@@ -52,6 +54,7 @@ const formatKeyData = keyDataObject => {
   return result
 }
 
+// Used in /user/${userId}
 const userInfosMapping = {
   id: "userId",
   todayScore: { newName: "score", setValue: value => formatScore(value) },
@@ -61,6 +64,7 @@ const userInfosMapping = {
   }
 }
 
+// Return the mapping data
 const mappingUserInfos = object => {
   const result = {}
   for (const key in object) {
@@ -85,6 +89,7 @@ const mappingUserInfos = object => {
   return result
 }
 
+////////////////////////////////////////////////////////////////
 const replaceSessionsKeys = sessionsArray =>
   sessionsArray.map(object => {
     const result = {}
@@ -110,6 +115,7 @@ const replaceSessionsKeys = sessionsArray =>
     return result
   })
 
+// Used in /user/${userId}/activity
 const userActivityMapping = {
   sessions: {
     newName: "activity",
@@ -117,6 +123,7 @@ const userActivityMapping = {
   }
 }
 
+// Return the mapping data
 const mappingUserActivity = object => {
   const result = {}
   for (const key in object) {
@@ -131,6 +138,7 @@ const mappingUserActivity = object => {
   return result
 }
 
+///////////////////////////////////////////////////////////////
 const activityNames = [
   "Cardio",
   "Energie",
@@ -139,6 +147,7 @@ const activityNames = [
   "Vitesse",
   "Intensité"
 ]
+
 const formatUserPerformance = performanceData =>
   performanceData
     .map(object => {
@@ -159,6 +168,7 @@ const formatUserPerformance = performanceData =>
     })
     .reverse()
 
+// Used in /user/${userId}/performance
 const userPerformanceMapping = {
   userId: "userId",
   data: {
