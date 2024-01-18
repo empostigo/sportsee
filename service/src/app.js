@@ -15,6 +15,9 @@ const userSessions = `${userPath}/average-sessions`
 const userPerformance = `${userPath}/performance`
 const userData = `${userPath}/user-data`
 
+// keyData is displayed in /user/${userId}/activity
+let keyData
+
 const app = express()
 
 // /user/userId
@@ -23,6 +26,9 @@ app.get(userPath, async (req, res) => {
   await axios(remoteURL)
     .then(response => {
       const userInfos = mappingUserInfos(response.data.data)
+      keyData = userInfos.keyData
+      delete userInfos.keyData
+
       res.status(201).json(userInfos)
     })
     .catch(error => {
@@ -37,6 +43,7 @@ app.get(userActivity, async (req, res) => {
   await axios(remoteURL)
     .then(response => {
       const userActivity = mappingUserActivity(response.data.data)
+      userActivity.keyData = keyData
       res.status(201).json(userActivity)
     })
     .catch(error => {
